@@ -1,10 +1,10 @@
-# Morse Decoder
+# School Library
 
-> ....
+> Complete **school library** administration system, developed entirely in Ruby language.
 
-## Getting Started
+## Language 
 
-...
+- Ruby
 
 ## Authors
 
@@ -13,13 +13,6 @@
 - GitHub: [@mgmediaweb](https://github.com/mgmediaweb)
 - Twitter: [@GonzoMedinaDev](https://twitter.com/GonzoMedinaDev)
 - LinkedIn: [gonzalo-medina-g](https://www.linkedin.com/in/gonzalo-medina-g/)
-
-👤 **Oyelakin Ridwan Adio**
-
-**Oyelakin Ridwan Adio**
-- GitHub: [@oyelakin](https://github.com/oyelakinG9)
-- Twitter: [@oyelakin](https://twitter.com/OyelakinG1)
-- LinkedIn: [@oyelakin](https://www.linkedin.com/in/oyelakin-ridwan-4b4a02b6/)
 
 ## 🤝 Contributing
 

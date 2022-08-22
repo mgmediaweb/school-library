@@ -13,23 +13,23 @@ class Main
 
   def start
     @main_scr.layout
-    mainOptions
+    main_options
   end
 
-  def mainOptions
+  def main_options
     opt = gets.chomp.to_i.abs
-  
+
     case opt
-      when 1 then
-        
-      when 2 then
-        
-      when 4 then
-        @main_scr.addStudent
-        
-      when 0
-        puts 'are u sure???'
-        @exit = true
+    when 1
+      puts 'option 1'
+    when 2
+      puts 'option 2'
+    when 4
+      @main_scr.add_student
+
+    when 0
+      puts 'are u sure???'
+      @exit = true
     end
   end
 end

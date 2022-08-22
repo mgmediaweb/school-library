@@ -17,7 +17,7 @@ class MainScreen
     print "\n║  [0] Exit.                                                ║"
   end
 
-  def addStudent
+  def add_student
     header
     print "\n║  Add a student                                            ║"
     print "\n╠═══════════════════════════════════════════════════════════╣"
@@ -26,18 +26,17 @@ class MainScreen
     print "\n║  Insert the Classroom:                                    ║"
     print "\n║  Insert the Name:                                         ║"
     print "\n║                                                           ║"
-    print "\n╚═══════════════════════════════════════════════════════════╝"   
-    print "\n\n" 
+    print "\n╚═══════════════════════════════════════════════════════════╝"
+    print "\n\n"
   end
 
   def header
-    system ('cls')
+    system('cls')
     print "\n╔═══════════════════════════════════════════════════════════╗"
     print "\n║                                                           ║"
     print "\n║                  School Library System                    ║"
     print "\n║                                                           ║"
     print "\n╠═══════════════════════════════════════════════════════════╣"
-       
   end
 
   def footer
@@ -45,8 +44,8 @@ class MainScreen
     print "\n╠═══════════════════════════════════════════════════════════╣"
     print "\n║                                                           ║"
     print "\n║  [ ] Please select a option number, then press enter      ║"
-    print "\n║                                                           ║"    
-    print "\n╚═══════════════════════════════════════════════════════════╝"   
-    print "\n\n" 
-  end  
+    print "\n║                                                           ║"
+    print "\n╚═══════════════════════════════════════════════════════════╝"
+    print "\n\n"
+  end
 end

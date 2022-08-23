@@ -6,7 +6,7 @@ class Student < Person
   def initialize(
     age,
     classroom,
-    name: 'Unknown',
+    name = 'Unknown',
     parent_permission: true
   )
     super(age, name, parent_permission)

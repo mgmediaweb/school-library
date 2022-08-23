@@ -1,3 +1,5 @@
+![](https://img.shields.io/badge/Microverse-blueviolet)
+
 # School Library
 
 > Complete **school library** administration system, developed entirely in Ruby language.

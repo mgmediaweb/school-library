@@ -1,5 +1,5 @@
-require_relative './pages/student'
-require_relative './pages/teacher'
+require_relative './student'
+require_relative './teacher'
 require_relative './views/main_screen'
 
 class Main
@@ -39,21 +39,25 @@ Main.new
 print "\n"
 
 stud = Student.new(
-  age = 17,
-  classroom = 601,
-  name = 'Gonzalo'
+  17,
+  '601',
+  'Julio'
+)
+
+teach = Teacher.new(
+  44,
+  'Math',
+  'Franco'
 )
 
 p stud.name
+p stud.age
 p stud.classroom
 p stud.can_use_services?
 
-teach = Teacher.new(
-  age = 44,
-  specialization = 'Math',
-  name = 'Franco'
-)
+print "----------------\n"
 
 p teach.name
+p teach.age
 p teach.specialization
 p teach.can_use_services?

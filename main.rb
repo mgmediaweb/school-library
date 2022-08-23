@@ -1,5 +1,5 @@
-require_relative './pages/person'
 require_relative './pages/student'
+require_relative './pages/teacher'
 require_relative './views/main_screen'
 
 class Main
@@ -36,12 +36,24 @@ end
 
 Main.new
 
-# alumni = Person.new(22)
+print "\n"
 
-# p alumni.can_use_services?
+stud = Student.new(
+  age = 17,
+  classroom = 601,
+  name = 'Gonzalo'
+)
 
-# alumni.name = 'Gonzalo'
+p stud.name
+p stud.classroom
+p stud.can_use_services?
 
-# p alumni.name
+teach = Teacher.new(
+  age = 44,
+  specialization = 'Math',
+  name = 'Franco'
+)
 
-# stud = Student.new(18, 5)
+p teach.name
+p teach.specialization
+p teach.can_use_services?

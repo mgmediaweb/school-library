@@ -1,19 +1,19 @@
 require_relative './person'
 
-class Student < Person
-  attr_accessor :classroom
+class Teacher < Person
+  attr_accessor :specialization
 
   def initialize(
     age,
-    classroom,
+    specialization,
     name = 'Unknown',
     parent_permission = true
   )
     super(age, name, parent_permission)
-    @classroom = classroom
+    @specialization = specialization
   end
 
-  def play_hooky
-    '¯\(ツ)/¯'
+  def can_use_services?
+    true
   end
 end

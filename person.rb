@@ -27,15 +27,8 @@ class Person < Nameable
   end
 
   def add_rental(rental)
-      @rentals.push(rental)
-      rentals.person = self
-  end  
-
-  # TEMPORAL USE, DELETE IT
-  def list_rentals
-    print "\nList of Rentals of #{@name}\n"
-    @rentals.each_with_index { |elem, index| print "#{index + 1}.- #{elem.date}\n" }
-    print "\n"
+    @rentals.push(rental)
+    rentals.person = self
   end
 
   private

@@ -125,7 +125,7 @@ class App
       name = gets.chomp
       print '   Enter a age: '
       age = gets.chomp.to_i
-      print '   Haz parent persmision [Y/N]: '
+      print '   Has parent persmision [Y/N]: '
       permision = gets.chomp.downcase
       Student.new(age, nil, name.capitalize, permision == 'y')
     when 2

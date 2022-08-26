@@ -7,7 +7,7 @@ class Teacher < Person
     age,
     specialization,
     name = 'Unknown',
-    parent_permission: true
+    parent_permission = true
   )
     super(age, name, parent_permission)
     @specialization = specialization

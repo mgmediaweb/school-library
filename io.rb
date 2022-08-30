@@ -4,13 +4,13 @@ class IOclass
 
     @file = case @type
             when 'books'
-              'books.json'
+              './json/books.json'
             when 'people'
-              'people.json'
+              './json/people.json'
             when 'rentals'
-              'rentals.json'
+              './json/rentals.json'
             else
-              'default.json'
+              './json/default.json'
             end
   end
 

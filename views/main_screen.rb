@@ -61,16 +61,16 @@ class MainScreen
   end
 
   def rent_history(*args)
-    data, person, exist = args
+    data, person, exist, rentals = args
     header
     rent_title(person)
 
     if !exist
       print "\n║                 the person does not exist                 ║"
     elsif person
-      if person.rentals.length.positive?
-        person.rentals.each do |elem|
-          line = "\n║  #{elem.date} - #{elem.book.title} (#{elem.book.author})"
+      if rentals.length.positive?
+        rentals.each do |elem|
+          line = "\n║  #{elem['date']} - #{elem['book']['title']} (#{elem['book']['author']})"
           print line
           print "#{whitespace(line.length)}║"
         end
@@ -80,13 +80,12 @@ class MainScreen
     else
       loop_person(data)
     end
-
     rent_footer(data)
   end
 
   def rent_title(person)
     if person
-      line = "\n║  Rental history: #{person.name}"
+      line = "\n║  Rental history: #{person['name']}"
       print line
       print "#{whitespace(line.length)}║"
     else
@@ -114,8 +113,8 @@ class MainScreen
 
   def loop_book(data)
     if data.length.positive?
-      data.each_with_index do |elem, index|
-        line = "\n║  [#{index + 1}] #{elem['title']} (#{elem['author']})"
+      data.each do |elem|
+        line = "\n║  [#{elem['id']}] #{elem['title']} (#{elem['author']})"
         print line
         print "#{whitespace(line.length)}║"
       end
@@ -126,8 +125,8 @@ class MainScreen
 
   def loop_person(data)
     if data.length.positive?
-      data.each_with_index do |elem, index|
-        line = "\n║  [#{index + 1}] #{elem.name} (#{elem.class})"
+      data.each do |elem|
+        line = "\n║  [#{elem['id']}] #{elem['name']} (#{elem['type']})"
         print line
         print "#{whitespace(line.length)}║"
       end

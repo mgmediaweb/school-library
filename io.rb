@@ -1,7 +1,6 @@
 class IOclass
   def initialize(arg)
     @type = arg
-    # @file =  'books.json'
 
     @file = case @type
             when 'books'
@@ -20,36 +19,42 @@ class IOclass
     file_data = file.read
     arr_books = []
 
-    p "--> #{file_data}"
-
     if file_data != ''
       elems = JSON.parse(file_data)
-
-      elems.each do |item|
-        arr_books << {
-          'title' => item['title'],
-          'author' => item['author']
-        }
-      end
+      arr_books = make_array(elems)
     end
 
     close(file)
     arr_books
   end
 
-  def write(_elems)
-    arr_books = []
+  def write(elems)
+    file = File.open(@file, 'w')
+    File.write(@file, JSON.pretty_generate(make_array(elems)))
+    close(file)
+  end
 
-    # elems.each do |item|
-    #   arr_books << {
-    #     'title' => item['title'],
-    #     'author' => item['author']
-    #   }
-    # end
+  def make_array(elems)
+    arr_items = []
 
-    # file = File.open(@file, 'w')
-    # File.write(@file, JSON.pretty_generate(arr_books))
-    # close(file)
+    elems.each do |item|
+      case @type
+      when 'books'
+        arr_items << {
+          'id' => item['id'], 'title' => item['title'], 'author' => item['author']
+        }
+      when 'people'
+        arr_items << {
+          'id' => item['id'], 'name' => item['name'], 'age' => item['age'], 'type' => item['type']
+        }
+      when 'rentals'
+        arr_items << {
+          'id' => item['id'], 'book' => item['book'], 'person' => item['person'], 'date' => item['date']
+        }
+      end
+    end
+
+    arr_items
   end
 
   def close(file)

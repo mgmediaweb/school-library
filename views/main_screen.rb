@@ -115,7 +115,7 @@ class MainScreen
   def loop_book(data)
     if data.length.positive?
       data.each_with_index do |elem, index|
-        line = "\n║  [#{index + 1}] #{elem.title} (#{elem.author})"
+        line = "\n║  [#{index + 1}] #{elem['title']} (#{elem['author']})"
         print line
         print "#{whitespace(line.length)}║"
       end

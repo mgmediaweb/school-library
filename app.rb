@@ -1,3 +1,4 @@
+require_relative './io'
 require_relative './book'
 require_relative './person'
 require_relative './rental'
@@ -8,46 +9,22 @@ require_relative './views/main_screen'
 class App
   def initialize
     @screen = MainScreen.new
+    @iobooks = IOclass.new('books')
     @person_list = []
-    @book_list = []
+    @book_list = @iobooks.read
     @rental_list = []
-  end
-
-  def run
-    @screen.initial
-    print '   Select a option number, then press [ENTER]: '
-    opc = gets.chomp.to_i
-
-    case opc
-    when 1
-      list_book
-    when 2
-      list_people
-    when 3
-      add_person
-    when 4
-      add_book
-    when 5
-      rent_a_book
-    when 6
-      rent_history
-    else
-      @screen.exit
-    end
   end
 
   # OPTION 1
   def list_book
     @screen.list_books(@book_list)
     gets.chomp
-    run
   end
 
   # OPTION 2
   def list_people
     @screen.list_people(@person_list)
     gets.chomp
-    run
   end
 
   # OPTION 3
@@ -67,12 +44,17 @@ class App
     print '   Enter a author: '
     author = gets.chomp
 
-    new_book = Book.new(
-      title.capitalize,
-      author.capitalize
-    )
+    # Book.new(
+    #   title.capitalize,
+    #   author.capitalize
+    # )
 
-    @book_list.push(new_book)
+    @book_list << {
+      'title' => title.capitalize,
+      'author' => author.capitalize
+    }
+
+    @iobooks.write(@book_list)
     goback
   end
 
@@ -91,7 +73,6 @@ class App
       goback
     else
       gets.chomp
-      run
     end
   end
 
@@ -109,13 +90,11 @@ class App
       end
     end
     gets.chomp
-    run
   end
 
   def goback
     @screen.success
     sleep(2)
-    run
   end
 
   def new_person(opc)
@@ -136,8 +115,6 @@ class App
       print '   Enter specialization: '
       specialization = gets.chomp
       Teacher.new(age, specialization.capitalize, name.capitalize)
-    else
-      run
     end
   end
 end

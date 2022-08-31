@@ -1,0 +1,47 @@
+[
+  {
+    "id": 77,
+    "book": {
+      "id": 48,
+      "title": "Dracula",
+      "author": "Brand strocker"
+    },
+    "person": {
+      "id": 123,
+      "name": "Profesor Jirafales",
+      "age": 46,
+      "type": "Teacher"
+    },
+    "date": "2022-08-30"
+  },
+  {
+    "id": 85,
+    "book": {
+      "id": 96,
+      "title": "Da vinci code",
+      "author": "Dan brown"
+    },
+    "person": {
+      "id": 10,
+      "name": "Chilindrina",
+      "age": 11,
+      "type": "Student"
+    },
+    "date": "2022-08-01"
+  },
+  {
+    "id": 17,
+    "book": {
+      "id": 95,
+      "title": "El principito",
+      "author": "Desconocido"
+    },
+    "person": {
+      "id": 123,
+      "name": "Profesor Jirafales",
+      "age": 46,
+      "type": "Teacher"
+    },
+    "date": "2022-08-30"
+  }
+]

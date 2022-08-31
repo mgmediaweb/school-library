@@ -1,0 +1,20 @@
+[
+  {
+    "id": 123,
+    "name": "Profesor Jirafales",
+    "age": 46,
+    "type": "Teacher"
+  },
+  {
+    "id": 10,
+    "name": "Chilindrina",
+    "age": 11,
+    "type": "Student"
+  },
+  {
+    "id": 86,
+    "name": "El chavo",
+    "age": 12,
+    "type": "Student"
+  }
+]

@@ -1,3 +1,4 @@
+require_relative './io'
 require_relative './book'
 require_relative './person'
 require_relative './rental'
@@ -8,46 +9,24 @@ require_relative './views/main_screen'
 class App
   def initialize
     @screen = MainScreen.new
-    @person_list = []
-    @book_list = []
-    @rental_list = []
-  end
-
-  def run
-    @screen.initial
-    print '   Select a option number, then press [ENTER]: '
-    opc = gets.chomp.to_i
-
-    case opc
-    when 1
-      list_book
-    when 2
-      list_people
-    when 3
-      add_person
-    when 4
-      add_book
-    when 5
-      rent_a_book
-    when 6
-      rent_history
-    else
-      @screen.exit
-    end
+    @iobooks = IOclass.new('books')
+    @iopeople = IOclass.new('people')
+    @iorental = IOclass.new('rentals')
+    @person_list = @iopeople.read
+    @book_list = @iobooks.read
+    @rental_list = @iorental.read
   end
 
   # OPTION 1
   def list_book
     @screen.list_books(@book_list)
     gets.chomp
-    run
   end
 
   # OPTION 2
   def list_people
     @screen.list_people(@person_list)
     gets.chomp
-    run
   end
 
   # OPTION 3
@@ -55,7 +34,8 @@ class App
     @screen.add_person
     print '   Enter [1] for Student, or [2] for a teacher: '
     opc = gets.chomp.to_i
-    @person_list.push(new_person(opc))
+    @person_list << new_person(opc)
+    @iopeople.write(@person_list)
     goback
   end
 
@@ -63,16 +43,17 @@ class App
   def add_book
     @screen.add_book
     print '   Enter a title: '
-    title = gets.chomp
+    title = gets.chomp.capitalize
     print '   Enter a author: '
-    author = gets.chomp
+    author = gets.chomp.capitalize
 
-    new_book = Book.new(
-      title.capitalize,
-      author.capitalize
-    )
+    @book_list << {
+      'id' => Random.rand(1..100),
+      'title' => title,
+      'author' => author
+    }
 
-    @book_list.push(new_book)
+    @iobooks.write(@book_list)
     goback
   end
 
@@ -86,58 +67,73 @@ class App
       person = gets.chomp.to_i
       print '   Enter a date [YYYY-MM-DD]: '
       date = gets.chomp
-      new_rental = Rental.new(date, @book_list[book - 1], @person_list[person - 1])
-      @rental_list.push(new_rental)
+
+      book_item = @book_list.select { |item| item if item['id'] == book }
+      person_item = @person_list.select { |item| item if item['id'] == person }
+
+      @rental_list << {
+        'id' => Random.rand(1..100), 'book' => book_item[0], 'person' => person_item[0], 'date' => date
+      }
+      @iorental.write(@rental_list)
       goback
     else
       gets.chomp
-      run
     end
   end
 
   # OPTION 6
   def rent_history
     @screen.rent_history(@person_list, nil, true)
+
     if @person_list.length.positive?
       print '   Select a person: '
       person = gets.chomp.to_i
 
-      if @person_list[person - 1]
-        @screen.rent_history(nil, @person_list[person - 1], true)
+      person_item = @person_list.select { |item| item if item['id'] == person }
+
+      person_selected = person_item[0]
+
+      rental_items = @rental_list.select { |item| item if item['person']['id'] == person_selected['id'] }
+
+      if person_item[0]
+        @screen.rent_history(nil, person_item[0], true, rental_items)
       else
-        @screen.rent_history(nil, nil, false)
+        @screen.rent_history(nil, nil, false, nil)
       end
     end
     gets.chomp
-    run
+  end
+
+  def new_person(opc)
+    # name, age = nil
+
+    print '   Enter a name: '
+    name = gets.chomp.capitalize
+    print '   Enter a age: '
+    age = gets.chomp.to_i
+
+    case opc
+    when 1
+      print '   Has parent persmision [Y/N]: '
+      permision = gets.chomp.downcase
+      Student.new(age, nil, name, permision == 'y')
+    when 2
+      print '   Enter specialization: '
+      specialization = gets.chomp.capitalize
+      Teacher.new(age, specialization, name)
+    end
+
+    opc_name = if opc == 1
+                 'Student'
+               else
+                 'Teacher'
+               end
+
+    { 'id' => Random.rand(1..100), 'name' => name, 'age' => age, 'type' => opc_name }
   end
 
   def goback
     @screen.success
     sleep(2)
-    run
-  end
-
-  def new_person(opc)
-    case opc
-    when 1
-      print '   Enter a name: '
-      name = gets.chomp
-      print '   Enter a age: '
-      age = gets.chomp.to_i
-      print '   Has parent persmision [Y/N]: '
-      permision = gets.chomp.downcase
-      Student.new(age, nil, name.capitalize, permision == 'y')
-    when 2
-      print '   Enter a name: '
-      name = gets.chomp
-      print '   Enter a age: '
-      age = gets.chomp.to_i
-      print '   Enter specialization: '
-      specialization = gets.chomp
-      Teacher.new(age, specialization.capitalize, name.capitalize)
-    else
-      run
-    end
   end
 end

@@ -92,11 +92,11 @@ class App
       person_item = @person_list.select { |item| item if item['id'] == person }
       person_selected = person_item[0]
 
-      if person_item != []
-        rental_items = @rental_list.select { |item| item if item['person']['id'] == person_selected['id'] }        
-        @screen.rent_history(nil, person_item[0], true, rental_items)
-      else
+      if person_item == []
         @screen.rent_history(nil, nil, false, nil)
+      else
+        rental_items = @rental_list.select { |item| item if item['person']['id'] == person_selected['id'] }
+        @screen.rent_history(nil, person_item[0], true, rental_items)
       end
     end
     gets.chomp

@@ -86,16 +86,14 @@ class App
     @screen.rent_history(@person_list, nil, true)
 
     if @person_list.length.positive?
-      print '   Select a person: '
+      print '   Select a person ID: '
       person = gets.chomp.to_i
 
       person_item = @person_list.select { |item| item if item['id'] == person }
-
       person_selected = person_item[0]
 
-      rental_items = @rental_list.select { |item| item if item['person']['id'] == person_selected['id'] }
-
-      if person_item[0]
+      if person_item != []
+        rental_items = @rental_list.select { |item| item if item['person']['id'] == person_selected['id'] }        
         @screen.rent_history(nil, person_item[0], true, rental_items)
       else
         @screen.rent_history(nil, nil, false, nil)
@@ -105,8 +103,6 @@ class App
   end
 
   def new_person(opc)
-    # name, age = nil
-
     print '   Enter a name: '
     name = gets.chomp.capitalize
     print '   Enter a age: '

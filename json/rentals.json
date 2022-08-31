@@ -43,5 +43,50 @@
       "type": "Teacher"
     },
     "date": "2022-08-30"
+  },
+  {
+    "id": 97,
+    "book": {
+      "id": 48,
+      "title": "Dracula",
+      "author": "Brand strocker"
+    },
+    "person": {
+      "id": 98,
+      "name": "Gonzalo",
+      "age": 25,
+      "type": "Student"
+    },
+    "date": "2022-08-30"
+  },
+  {
+    "id": 69,
+    "book": {
+      "id": 96,
+      "title": "Da vinci code",
+      "author": "Dan brown"
+    },
+    "person": {
+      "id": 98,
+      "name": "Gonzalo",
+      "age": 25,
+      "type": "Student"
+    },
+    "date": "2022-08-30"
+  },
+  {
+    "id": 64,
+    "book": {
+      "id": 77,
+      "title": "Ben hur",
+      "author": "Gladiator"
+    },
+    "person": {
+      "id": 98,
+      "name": "Gonzalo",
+      "age": 25,
+      "type": "Student"
+    },
+    "date": "2022-08-31"
   }
 ]

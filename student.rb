@@ -11,8 +11,6 @@ class Student < Person
   )
     super(age, name, parent_permission)
     @classroom = classroom
-
-    belongs_to(@classroom) if classroom
   end
 
   def play_hooky

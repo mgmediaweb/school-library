@@ -1,4 +1,4 @@
-require '../book'
+require_relative '../book'
 
 describe Book do
   new_book = Book.new(

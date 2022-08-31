@@ -16,5 +16,11 @@
     "name": "El chavo",
     "age": 12,
     "type": "Student"
+  },
+  {
+    "id": 98,
+    "name": "Gonzalo",
+    "age": 25,
+    "type": "Student"
   }
 ]

@@ -10,7 +10,6 @@ class Rental
     @book = book
     @person = person
     @rentals = []
-    belongs_to
   end
 
   def belongs_to
